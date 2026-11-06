@@ -1,0 +1,6 @@
+#!/bin/sh
+# Publish the site: commits any changes and pushes to GitHub Pages.
+cd "$(dirname "$0")" || exit 1
+git add -A
+git commit -m "${1:-Update site}" || echo "Nothing new to commit."
+git push
