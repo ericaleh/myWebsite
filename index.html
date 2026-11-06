@@ -58,9 +58,11 @@ h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0}
 .top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
 .top .wrap{display:flex;align-items:center;gap:14px;padding-block:12px}
 .brand{font-family:var(--display);font-weight:800;font-size:20px;letter-spacing:-.02em;white-space:nowrap}
-.brand b{color:var(--accent)}
+.brand{display:flex;align-items:center;gap:6px}
+.brand .bag{flex:none;color:var(--accent)}
+.brand b{color:var(--accent);font-weight:500}
 .search{flex:1;min-width:0;display:flex;align-items:center;gap:8px;background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:8px 14px}
-.search input{flex:1;min-width:0;border:0;background:transparent;font:inherit;color:var(--ink);outline:none}
+.search input{flex:1;min-width:0;text-overflow:ellipsis;cursor:default;border:0;background:transparent;font:inherit;color:var(--ink);outline:none}
 .search svg{flex:none;color:var(--muted)}
 .iconbtn{position:relative;display:grid;place-items:center;width:40px;height:40px;border-radius:999px;border:1px solid var(--line);background:var(--surface)}
 .iconbtn:hover{border-color:var(--ink)}
@@ -82,7 +84,6 @@ h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0}
 .photo .floating{position:absolute;top:10px;right:10px;display:flex;flex-direction:column;gap:8px}
 .round{width:40px;height:40px;border-radius:999px;border:0;background:var(--surface);display:grid;place-items:center;box-shadow:var(--shadow)}
 .round[aria-pressed="true"] .heart-path{fill:var(--heart);stroke:var(--heart)}
-.round[aria-pressed="true"] .bm-path{fill:var(--accent);stroke:var(--accent)}
 .pop{animation:pop .35s ease}
 @keyframes pop{40%{transform:scale(1.25)}100%{transform:scale(1)}}
 .thumbs{display:flex;gap:8px;margin-top:10px}
@@ -97,7 +98,7 @@ h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0}
 .meta{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:14px;color:var(--muted)}
 .meta strong{color:var(--ink)}
 .pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;font-size:12px;font-weight:600;padding:3px 10px;background:var(--tile2);color:var(--ink)}
-.pills{display:inline-flex;flex-wrap:wrap;gap:6px}
+.lowstock{color:var(--heart);font-weight:600}
 .pill.ok{background:var(--tile3)}
 .pill.blue{background:var(--tile1)}
 .pitch{max-width:62ch;margin:0;color:var(--ink);padding-left:18px;display:grid;gap:6px}
@@ -107,12 +108,12 @@ h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0}
 .specs dd{margin:2px 0 0;font-weight:600;font-variant-numeric:tabular-nums}
 
 .buybox{margin-top:14px;background:var(--surface);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);padding:16px 24px;display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:10px 36px}
-.strip-main{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
 .buybox .ship{grid-template-columns:repeat(3,minmax(0,1fr));gap:4px 24px}
 .ship>div{display:flex;gap:8px;align-items:flex-start}
 .ship .ico{flex:none;width:16px;height:16px;margin-top:1px;fill:none;stroke:var(--accent);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .ship .ico circle{fill:var(--surface)}
-.buybox .sku{grid-column:2;justify-self:end}
+.buybox{grid-template-columns:1fr}
+.buybox .sku{grid-column:1;justify-self:end}
 .price{font-family:var(--display);font-size:24px;font-weight:700;letter-spacing:-.02em}
 .price small{display:block;font-family:var(--body);font-size:13px;font-weight:400;color:var(--muted);letter-spacing:0}
 .stock{color:var(--ok);font-weight:600}
@@ -121,6 +122,10 @@ h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0}
 .btn.dark{background:var(--ink);color:var(--surface)}
 .btn.dark:hover{filter:none;opacity:.88}
 .ctas .btn{flex:1 1 auto}
+.namerow{display:flex;align-items:center;flex-wrap:wrap;gap:10px 16px}
+.contact{display:flex;gap:8px}
+.iconlink{display:grid;place-items:center;width:36px;height:36px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);box-sizing:border-box}
+.iconlink:hover{border-color:var(--ink)}
 .btn.ghost:hover{border-color:var(--ink);filter:none}
 .btn.primary{background:var(--accent);color:var(--accent-ink)}
 .btn.secondary{background:var(--deal);color:var(--deal-ink)}
@@ -154,7 +159,8 @@ h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0}
 .card .art.logo img{max-width:62%;max-height:64px;object-fit:contain;margin-top:14px}
 .card .art.logo .tag{background:rgba(255,255,255,.75);color:#141A2E}
 .card .art.logo{border-bottom:0}
-.card[data-id="w-yale"] .art.logo img{max-height:44px}
+.card[data-id="w-yale"] .art.logo img{max-height:34px}
+.card[data-id="w-groover"] .art.logo img{max-height:48px}
 .card[data-id="p-onset"] .art.logo img{max-height:128px;max-width:80%;margin-top:6px}
 .card[data-id="p-crate"] .art.logo img{max-height:44px;margin-top:18px}
 .card .art{overflow:hidden}
@@ -183,7 +189,14 @@ h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0}
 .quick{color:var(--accent);font-weight:600;font-size:13px;white-space:nowrap}
 .empty{color:var(--muted);font-size:14px;padding:16px 0}
 
-/* drawer + lists */
+/* chat pop-up */
+.scrim.center{justify-content:center;align-items:center;padding:16px}
+.modal{position:relative;width:min(380px,100%);background:var(--surface);border-radius:20px;box-shadow:var(--shadow);padding:28px 24px 24px;display:grid;gap:16px;text-align:center}
+.modal h3{font-size:24px;letter-spacing:-.02em}
+.modal .close{position:absolute;top:10px;right:10px}
+.modal .ctas .btn{padding:10px 16px}
+
+/* drawer */
 .scrim{position:fixed;inset:0;background:rgba(10,14,28,.45);z-index:20;display:flex;justify-content:flex-end}
 .drawer{width:min(460px,100%);height:100%;background:var(--surface);overflow-y:auto;padding:24px max(20px,env(safe-area-inset-right,0px)) calc(24px + env(safe-area-inset-bottom,0px)) 20px;display:flex;flex-direction:column;gap:14px;animation:slide .22s ease}
 @keyframes slide{from{transform:translateX(30px);opacity:.4}}
@@ -207,12 +220,19 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
 
 @media (max-width:980px){.listing{grid-template-columns:minmax(0,260px) minmax(0,1fr)}.buybox{grid-template-columns:1fr}.buybox .ship{grid-template-columns:1fr}.buybox .sku{grid-column:1;justify-self:start}}
 @media (max-width:640px){
+  .top .wrap:not(.chips){flex-wrap:wrap;row-gap:10px}
+  .brand{flex:1}
+  .search{order:3;flex:1 1 100%}
   .listing{grid-template-columns:1fr;padding:16px;gap:18px}
   .listing{grid-template-columns:84px minmax(0,1fr);column-gap:14px;row-gap:12px}
   .listing>div:first-child{grid-column:1;grid-row:1 / span 3;align-self:center}
   .info{display:contents}
   .info>*{grid-column:1 / -1}
-  .info>.crumbs,.info>h1,.info>.subtitle{grid-column:2}
+  .info>.crumbs,.info>h1,.info>.namerow,.info>.subtitle{grid-column:2}
+  .namerow{gap:8px;flex-wrap:nowrap}
+  .contact{gap:6px}
+  .iconlink{width:30px;height:30px}
+  .iconlink svg{width:15px;height:15px}
   .info h1{font-size:34px}
   .info .subtitle{font-size:16px}
   .photo{width:84px;max-width:84px;aspect-ratio:1/1;margin:0;overflow:visible;background:none}
@@ -233,19 +253,19 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
 
 <header class="top">
   <div class="wrap">
-    <div class="brand">erica<b>.</b></div>
-    <div style="flex:1"></div>
-    <button class="iconbtn" id="openSaved" aria-label="Your saved lists">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
-    </button>
+    <div class="brand"><svg class="bag" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1 12H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span>erica<b>marketplace</b></span></div>
+    <label class="search">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="search" value="staff product manager who ships" readonly aria-label="Search">
+    </label>
   </div>
   <div class="wrap chips" role="toolbar" aria-label="Filter shelves">
     <button class="chip" data-filter="all" aria-pressed="true">All</button>
-    <button class="chip" data-filter="skills" aria-pressed="false">Skills</button>
-    <button class="chip" data-filter="work" aria-pressed="false">Previous experience</button>
-    <button class="chip" data-filter="products" aria-pressed="false">Work projects</button>
+    <button class="chip" data-filter="products" aria-pressed="false">Projects you might like</button>
+    <button class="chip" data-filter="skills" aria-pressed="false">Top-rated skills</button>
+    <button class="chip" data-filter="work" aria-pressed="false">Product history</button>
     <button class="chip" data-filter="projects" aria-pressed="false">Side projects</button>
-    <button class="chip" data-filter="hobbies" aria-pressed="false">Hobbies & interests</button>
+    <button class="chip" data-filter="hobbies" aria-pressed="false">Bonus features</button>
   </div>
 </header>
 
@@ -261,43 +281,38 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
           <button class="round" id="heroHeart" aria-pressed="false" aria-label="Like Erica's profile">
             <svg width="20" height="20" viewBox="0 0 24 24"><path class="heart-path" d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z" fill="none" stroke="currentColor" stroke-width="2"/></svg>
           </button>
-          <button class="round" id="heroSave" aria-pressed="false" aria-label="Save Erica to a list">
-            <svg width="20" height="20" viewBox="0 0 24 24"><path class="bm-path" d="M6 3h12v18l-6-4-6 4z" fill="none" stroke="currentColor" stroke-width="2"/></svg>
-          </button>
         </div>
       </div>
     </div>
 
     <div class="info">
       <div class="crumbs">Product › Builders › Staff level</div>
-      <h1>Erica Leh</h1>
+      <div class="namerow">
+        <h1>Erica Leh</h1>
+        <div class="contact">
+          <a class="iconlink" href="mailto:eleh915@gmail.com" aria-label="Email me" title="Email me"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
+          <a class="iconlink" href="https://linkedin.com/in/ericaleh" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="4" fill="#0A66C2"/><path fill="#fff" d="M6.94 5.5a1.69 1.69 0 1 1 0 3.38 1.69 1.69 0 0 1 0-3.38zM5.5 10h2.88v8.5H5.5zM10.2 10h2.76v1.16h.04c.38-.73 1.32-1.5 2.73-1.5 2.92 0 3.46 1.92 3.46 4.42v4.42h-2.88v-3.92c0-.94-.02-2.14-1.3-2.14-1.31 0-1.51 1.02-1.51 2.07v3.99H10.2z"/></svg></a>
+        </div>
+      </div>
       <div class="subtitle">Staff Product Manager</div>
       <div class="meta">
-        <span class="pills"><span class="pill blue">Marketplaces</span><span class="pill blue">Personalization</span><span class="pill blue">Music</span></span>
+        <span class="lowstock">1 left in stock</span>
         <span>Ships from <strong>Brooklyn, NY</strong></span>
       </div>
       <ul class="pitch">
-        <li>Track record of launching new revenue streams, driving activation and retention, and leading product strategy in a data-driven and research-focused manner</li>
-        <li>Experience coding and creating prototypes and apps in Python, PostgreSQL, R, C, Claude Code, Cursor, and Figma</li>
+        <li>Track record of launching new revenue streams and leading product strategy in a data-driven and research-focused manner</li>
+        <li>Analysis and products reaching 400M+ users</li>
+        <li>Experience coding and creating prototypes/apps in Claude Code, Figma, Cursor, Python, PostgreSQL, R, and C</li>
       </ul>
       <dl class="specs">
         <div><dt>Experience</dt><dd>11 years · 3 companies</dd></div>
-        <div><dt>Users reached</dt><dd>400M+ at Spotify</dd></div>
-        <div><dt>Builds with</dt><dd>Claude Code, Cursor, Figma, Python, SQL</dd></div>
         <div><dt>Education</dt><dd>Yale BA, magna cum laude</dd></div>
       </dl>
     </div>
 
   </section>
 
-  <aside class="buybox" aria-label="Contact">
-    <div class="strip-main">
-      <div class="price">Let's talk</div>
-      <div class="ctas">
-        <a class="btn dark" href="mailto:eleh915@gmail.com"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>Email me</a>
-        <a class="btn ghost" href="https://linkedin.com/in/ericaleh" target="_blank" rel="noopener">LinkedIn<span aria-hidden="true">↗</span></a>
-      </div>
-    </div>
+  <aside class="buybox" aria-label="Product details">
       <div class="ship">
         <div><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7.5 12 3l9 4.5v9L12 21l-9-4.5z"/><path d="M3 7.5 12 12l9-4.5M12 12v9"/></svg><span><b>Delivery:</b> arrives with prototypes &amp; PRDs in hand</span></div>
         <div><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path d="M17 10.5h1.5a2.5 2.5 0 0 1 0 5H16.5M8 3.5v2.5M12 3.5v2.5"/></svg><span><b>Care instructions:</b> does best in a collaborative environment and when watered with coffee</span></div>
@@ -307,30 +322,30 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
   </aside>
 
   <section class="shelf" id="products" data-shelf="products">
-    <div class="shelf-head"><div><h2>Projects you might like</h2></div>
+    <div class="shelf-head"><div><h2>Erica's projects you might like</h2></div>
       <div class="arrows"><button class="iconbtn" data-scroll="-1" aria-label="Scroll left">‹</button><button class="iconbtn" data-scroll="1" aria-label="Scroll right">›</button></div></div>
     <div class="row"></div>
   </section>
 
   <section class="shelf" id="skills" data-shelf="skills">
-    <div class="shelf-head"><div><h2>Discover skills</h2></div>
+    <div class="shelf-head"><div><h2>Erica's top-rated skills</h2></div>
       <div class="arrows"><button class="iconbtn" data-scroll="-1" aria-label="Scroll left">‹</button><button class="iconbtn" data-scroll="1" aria-label="Scroll right">›</button></div></div>
     <div class="row"></div>
   </section>
 
   <section class="shelf" id="work" data-shelf="work">
-    <div class="shelf-head"><div><h2>Previous experience</h2></div>
+    <div class="shelf-head"><div><h2>Erica's product history</h2></div>
       <div class="arrows"><button class="iconbtn" data-scroll="-1" aria-label="Scroll left">‹</button><button class="iconbtn" data-scroll="1" aria-label="Scroll right">›</button></div></div>
     <div class="row"></div>
   </section>
 
   <section class="shelf" id="projects" data-shelf="projects">
-    <div class="shelf-head"><div><h2>Built after hours</h2></div>
+    <div class="shelf-head"><div><h2>Built by Erica after hours</h2></div>
       <div class="arrows"><button class="iconbtn" data-scroll="-1" aria-label="Scroll left">‹</button><button class="iconbtn" data-scroll="1" aria-label="Scroll right">›</button></div></div>
     <div class="row"></div>
   </section>
   <section class="shelf" id="hobbies" data-shelf="hobbies">
-    <div class="shelf-head"><div><h2>Hobbies & interests</h2></div>
+    <div class="shelf-head"><div><h2>Erica's bonus features & interests</h2></div>
       <div class="arrows"><button class="iconbtn" data-scroll="-1" aria-label="Scroll left">‹</button><button class="iconbtn" data-scroll="1" aria-label="Scroll right">›</button></div></div>
     <div class="row"></div>
   </section>
@@ -347,7 +362,7 @@ const ITEMS = [
    bullets:["Moved the company from purely transactional to recurring revenue with Groover+","Introduced 0-to-1 features like Your Release Plan, Hype, and Charts"]},
   {id:"s-exp",shelf:"skills",tag:"Technical",art:"A/B",tone:"tile2",title:"Experimentation",desc:"Helped build and support Groover's A/B testing infrastructure from scratch",built:true,
    bullets:["Led experimentation for Discover Weekly, Release Radar, and Radio at Spotify","Piloted A/B segment tests for global advertisers at AppNexus"]},
-  {id:"s-data",shelf:"skills",tag:"Technical",art:"SELECT *",tone:"tile6",title:"Data Analysis",desc:"Brings a quantitatively minded approach and 7 years of experience as a data scientist/analyst to product work",built:true,
+  {id:"s-data",shelf:"skills",tag:"Technical",art:"SELECT *",tone:"tile6",title:"Data analysis",desc:"Brings a quantitatively minded approach and 7 years of experience as a data scientist/analyst to product work",built:true,
    bullets:["7 years as a data scientist and analyst at Spotify and AppNexus","Contributed to Groover's data warehouse and deployed production tables","Works hands-on in SQL, Python, and R"]},
   {id:"s-proto",shelf:"skills",tag:"Technical",art:"&lt;/&gt;",tone:"tile5",title:"AI-assisted prototyping",desc:"Builds AI prototypes and runs user research with them",built:true,
    bullets:["Builds working prototypes with Claude Code, Cursor, and Figma Make","Puts prototypes in front of users to test assumptions before engineering time is spent"]},
@@ -357,7 +372,7 @@ const ITEMS = [
    bullets:["Owned discovery and recommendation products in Spotify Personalization","Scoped and tested playlist features to help artists reach broader audiences"]},
   {id:"s-research",shelf:"skills",tag:"Research",art:"Why?",tone:"tile1",title:"User research",desc:"Conducted hundreds of user interviews to understand core needs and test usability & understanding",built:false,
    bullets:[]},
-  {id:"s-psych",shelf:"skills",tag:"Research",art:"Why?",tone:"tile5",title:"Human Psychology",desc:"Completed the Product Psychology Masterclass, focused on user behaviors, gap identification, and ethical strategy",built:false,
+  {id:"s-psych",shelf:"skills",tag:"Research",art:"Why?",tone:"tile5",title:"Human psychology",desc:"Completed the Product Psychology Masterclass, focused on user behaviors, gap identification, and ethical strategy",built:false,
    bullets:[]},
   {id:"s-i18n",shelf:"skills",tag:"Strategy",art:"20+",tone:"tile2",title:"Internationalization",desc:"Supported international expansion to new markets with automatic language translation",built:false,
    bullets:["Supported Groover's expansion into new markets","Rolled out automatic language translation across the product"]},
@@ -379,11 +394,11 @@ const ITEMS = [
   // projects (year shown before the tag once filled in)
   {id:"p-crate",shelf:"projects",year:"",tag:"2026",art:"Crate✓",tone:"tile4",title:"CrateCheck",desc:"Built website & marketing materials for an integration that helps DJs legally download the music they love faster",built:true,bullets:[]},
   {id:"p-onset",shelf:"projects",year:"",tag:"2025 – 2026",art:"Onset",tone:"tile2",title:"Onset Festival",desc:"Founded and ran a 3-day music and aerial arts festival in the Berkshires, with more than two dozen artists & performers",built:true,bullets:[]},
-  {id:"p-viz",shelf:"projects",year:"",tag:"2023",art:"∿∿∿",tone:"tile6",title:"Spotify Liked Songs Visualizer",desc:"Built an app that helps you better understand attributes of your listening on Spotify",built:true,bullets:[]},
+  {id:"p-viz",shelf:"projects",year:"",tag:"2023",art:"∿∿∿",tone:"tile6",title:"Spotify Liked Songs visualizer",desc:"Built an app that helps you better understand attributes of your listening on Spotify",built:true,bullets:[]},
   {id:"p-snap",shelf:"projects",year:"",tag:"2011",art:"$ → kcal",tone:"tile3",title:"SNAP grocery planner",desc:"Helps SNAP recipients budget groceries to get the most nutrition from their benefits",built:true,bullets:[]},
 
   // hobbies
-  {id:"h-aerial",shelf:"hobbies",tag:"",art:"Aerial",tone:"tile5",title:"Aerial Acrobatics",desc:"Trains and performs aerial arts, including silks and lyra; organizes aerial events in NY and MA",built:false,bullets:[]},
+  {id:"h-aerial",shelf:"hobbies",tag:"",art:"Aerial",tone:"tile5",title:"Aerial acrobatics",desc:"Trains and performs aerial arts, including silks and lyra; organizes aerial events in NY and MA",built:false,bullets:[]},
   {id:"h-music",shelf:"hobbies",tag:"",art:"♫",tone:"tile4",title:"Music",desc:"Produces music, plays guitar and electric violin, and DJs",built:false,bullets:[]},
   {id:"h-design",shelf:"hobbies",tag:"",art:"Aa",tone:"tile6",title:"Design",desc:"Loves building visual and interface design, set design, and motion graphics",built:false,bullets:[]},
 ];
@@ -414,7 +429,6 @@ const store = {
   set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
 };
 let likes = new Set(store.get("el-likes-v2",[]));
-let lists = store.get("el-lists-v2",{});
 const PROFILE = {id:"profile",title:"Erica Leh, Staff Product Manager"};
 const byId = id => id==="profile"?PROFILE:ITEMS.find(i=>i.id===id);
 
@@ -494,7 +508,18 @@ function toggleLike(id,btn){
   const on=likes.has(id);
   document.querySelectorAll(id==="profile"?"#heroHeart":`.card[data-id="${id}"] .like`).forEach(b=>b.setAttribute("aria-pressed",on));
   bump(btn);
-  if(on) toast(id==="profile"?"Liked. Good taste.":`Liked ${byId(id).title}`);
+  if(on) chatPopup();
+}
+function chatPopup(){
+  layer.innerHTML=`<div class="scrim center"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="chatTitle">
+    <button class="iconbtn close" aria-label="Close">✕</button>
+    <h3 id="chatTitle">See something you like? Let's chat!</h3>
+    <div class="ctas"><a class="btn dark" href="mailto:eleh915@gmail.com"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>Email me</a>
+        <a class="btn ghost" href="https://linkedin.com/in/ericaleh" target="_blank" rel="noopener">LinkedIn<span aria-hidden="true">↗</span></a></div>
+  </div></div>`;
+  const scrim=layer.firstChild;
+  scrim.addEventListener("click",e=>{if(e.target===scrim||e.target.closest(".close"))closeDrawer()});
+  scrim.querySelector(".ctas a")?.focus();
 }
 document.getElementById("heroHeart").setAttribute("aria-pressed",likes.has("profile"));
 document.getElementById("heroHeart").addEventListener("click",e=>toggleLike("profile",e.currentTarget));
@@ -505,16 +530,6 @@ document.querySelector("main").addEventListener("click",e=>{
   if(like){e.preventDefault();e.stopPropagation();toggleLike(card.dataset.id,like);return}
   if(e.target.closest("[data-more]") || card.closest("#skills")) openQuick(card.dataset.id);
 });
-
-// lists
-function savedTotal(){return new Set(Object.values(lists).flat()).size}
-function syncSaved(){
-  
-  const inAny=Object.values(lists).some(a=>a.includes("profile"));
-  document.getElementById("heroSave").setAttribute("aria-pressed",inAny);
-  store.set("el-lists-v2",lists);
-}
-syncSaved();
 
 const layer=document.getElementById("layer");
 function openDrawer(html){
@@ -527,36 +542,6 @@ function closeDrawer(){layer.innerHTML=""}
 document.addEventListener("keydown",e=>{
   if(e.key==="Escape"){closeDrawer();currentQuick=null}
   if(layer.querySelector(".qnav")&&(e.key==="ArrowRight"||e.key==="ArrowLeft")){e.preventDefault();stepQuick(e.key==="ArrowRight"?1:-1)}
-});
-
-function saveDrawer(id){
-  const it=byId(id);
-  const opts=Object.keys(lists).map((name,i)=>`<label class="listopt" for="l${i}"><input type="checkbox" id="l${i}" data-list="${name}" ${lists[name].includes(id)?"checked":""}><span><strong>${name}</strong><br><small style="color:var(--muted)">${lists[name].length} saved</small></span></label>`).join("");
-  openDrawer(`<button class="iconbtn close" aria-label="Close">✕</button>
-    <h3>Save to a list</h3><p style="margin:0;color:var(--muted)">${it.title}</p>
-    <div style="display:grid;gap:8px">${opts||`<div class="empty" style="padding:0">No lists yet. Name one below to save Erica to it.</div>`}</div>
-    <div class="newlist"><input id="newList" placeholder="New list name" maxlength="40"><button class="btn primary" id="mkList" style="padding:8px 16px">Create</button></div>`);
-  layer.querySelectorAll("[data-list]").forEach(cb=>cb.addEventListener("change",()=>{
-    const arr=lists[cb.dataset.list];
-    if(cb.checked){if(!arr.includes(id))arr.push(id);toast(`Saved to ${cb.dataset.list}`)}
-    else lists[cb.dataset.list]=arr.filter(x=>x!==id);
-    syncSaved(); if(id==="profile")bump(document.getElementById("heroSave"));
-  }));
-  const mk=()=>{const v=document.getElementById("newList").value.trim(); if(!v)return; if(!lists[v])lists[v]=[]; if(!lists[v].includes(id))lists[v].push(id); syncSaved(); toast(`Created "${v}" and saved`); saveDrawer(id)};
-  document.getElementById("mkList").addEventListener("click",mk);
-  document.getElementById("newList").addEventListener("keydown",e=>{if(e.key==="Enter")mk()});
-}
-document.getElementById("heroSave").addEventListener("click",()=>saveDrawer("profile"));
-
-document.getElementById("openSaved").addEventListener("click",()=>{
-  const names=Object.keys(lists);
-  const body=!names.length?`<div class="empty">No lists yet. Use the bookmark on Erica's card to start one.</div>`:names.map(n=>`<div><h4 style="margin:12px 0 4px;font-family:var(--display)">${n}</h4>${
-    lists[n].length?lists[n].map(id=>`<div class="saved-item"><span>${byId(id).title}</span><button class="quick" style="background:none;border:0" data-rm="${n}|${id}">Remove</button></div>`).join(""):`<div class="empty">Nothing here yet.</div>`}</div>`).join("");
-  const liked=[...likes].map(id=>byId(id)).filter(Boolean);
-  openDrawer(`<button class="iconbtn close" aria-label="Close">✕</button><h3>Your lists</h3>${body}
-    <div><h4 style="margin:12px 0 4px;font-family:var(--display)">Liked</h4>${liked.length?liked.map(i=>`<div class="saved-item"><span>${i.title}</span></div>`).join(""):`<div class="empty">Tap a heart to like something.</div>`}</div>
-    <p style="font-size:12px;color:var(--muted)">Lists are saved in this browser only.</p>`);
-  layer.querySelectorAll("[data-rm]").forEach(b=>b.addEventListener("click",()=>{const [n,id]=b.dataset.rm.split("|");lists[n]=lists[n].filter(x=>x!==id);syncSaved();document.getElementById("openSaved").click()}));
 });
 
 function quickIds(){
