@@ -12,7 +12,7 @@
 <style>
 /* Layout: a marketplace search results page. Sticky search bar, one "product listing" hero for Erica, then horizontally scrolling shelves. */
 :root{
-  --bg:#F3F4F7; --surface:#FFFFFF; --ink:#141A2E; --muted:#5B6278; --line:#E2E4EC;
+  --bg:#ECEEFB; --glow1:rgba(45,73,245,.16); --glow2:rgba(255,120,150,.14); --glow3:rgba(80,200,170,.12); --surface:#FFFFFF; --ink:#141A2E; --muted:#5B6278; --line:#E2E4EC;
   --accent:#2D49F5; --accent-ink:#FFFFFF; --deal:#FFD43B; --deal-ink:#2A2100; --heart:#E5484D; --ok:#15803D;
   --tile1:#DCE3FF; --tile2:#FFE9B8; --tile3:#D7F2E3; --tile4:#FBD9DC; --tile5:#E9DDFB; --tile6:#D6EEF7;
   --shadow:0 1px 2px rgba(20,26,46,.06),0 8px 24px rgba(20,26,46,.06);
@@ -21,18 +21,18 @@
   --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#0E1220; --surface:#171C2E; --ink:#ECEEF6; --muted:#A1A7BC; --line:#2A3048;
+  --bg:#0C1022; --glow1:rgba(110,130,255,.20); --glow2:rgba(255,110,150,.12); --glow3:rgba(60,190,160,.10); --surface:#171C2E; --ink:#ECEEF6; --muted:#A1A7BC; --line:#2A3048;
   --accent:#7B8CFF; --accent-ink:#0E1220; --deal:#FFD43B; --deal-ink:#2A2100; --heart:#FF6B70; --ok:#4ADE80;
   --tile1:#24305E; --tile2:#4A3A14; --tile3:#173D2B; --tile4:#4A2128; --tile5:#352552; --tile6:#173A48;
   --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25); color-scheme:dark}}
 :root[data-theme="dark"]{
-  --bg:#0E1220; --surface:#171C2E; --ink:#ECEEF6; --muted:#A1A7BC; --line:#2A3048;
+  --bg:#0C1022; --glow1:rgba(110,130,255,.20); --glow2:rgba(255,110,150,.12); --glow3:rgba(60,190,160,.10); --surface:#171C2E; --ink:#ECEEF6; --muted:#A1A7BC; --line:#2A3048;
   --accent:#7B8CFF; --accent-ink:#0E1220; --deal:#FFD43B; --deal-ink:#2A2100; --heart:#FF6B70; --ok:#4ADE80;
   --tile1:#24305E; --tile2:#4A3A14; --tile3:#173D2B; --tile4:#4A2128; --tile5:#352552; --tile6:#173A48;
   --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25); color-scheme:dark}
 
 *{box-sizing:border-box}
-body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5}
+body{background:radial-gradient(900px 520px at 0% 0%,var(--glow1),transparent 70%),radial-gradient(800px 520px at 100% 10%,var(--glow2),transparent 70%),radial-gradient(1000px 700px at 50% 100%,var(--glow3),transparent 70%),var(--bg);background-attachment:fixed;min-height:100vh;color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
 .wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 button{font:inherit;color:inherit;cursor:pointer}
@@ -209,7 +209,6 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
     <div style="flex:1"></div>
     <button class="iconbtn" id="openSaved" aria-label="Your saved lists">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
-      <span class="badge mono" id="savedCount" data-n="0">0</span>
     </button>
   </div>
   <div class="wrap chips" role="toolbar" aria-label="Filter shelves">
@@ -474,7 +473,7 @@ document.querySelector("main").addEventListener("click",e=>{
 // lists
 function savedTotal(){return new Set(Object.values(lists).flat()).size}
 function syncSaved(){
-  const n=savedTotal(); const b=document.getElementById("savedCount"); b.textContent=n; b.dataset.n=n;
+  
   const inAny=Object.values(lists).some(a=>a.includes("profile"));
   document.getElementById("heroSave").setAttribute("aria-pressed",inAny);
   store.set("el-lists-v2",lists);
